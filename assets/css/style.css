@@ -30,7 +30,10 @@ body{
 .wrapper{
 	/* height: 100%; */
 	width: 100%;
-	overflow: hidden;
+	/* overflow: hidden; */
+	display: flex;
+  flex-direction: column;
+  min-height: 100vh;
  }
 
 .container{
@@ -43,34 +46,47 @@ body{
 	.header{
 		width: 100%;
 		height: 100vh;
-		background: url('../img/apple-blog_web.jpg') right / cover no-repeat;
+		background: url('../img/apple-blog_web.jpg') center / cover no-repeat;
 		z-index: -10;
+		margin-top: -112px;
 	}
 
 	.header__navbar{
+		position: sticky;
+		top: 0;
+		z-index: 9999;
+	}
+
+	.menu{
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 20px 0;
-		margin-bottom: 176px;
+		padding: 20px calc(25px + 215 * ((100vw - 320px) / (1600 - 320)));
 	}
 
-	.header__navbar::before{
+	.menu::before{
 		content: '';
 		width: 100%;
-		min-height: 105px;
+		height: 100%;
 		background-color: rgba(196, 196, 196, 0.1);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+
+	.menu__burger{
+		display: none;
+		cursor: pointer;
 	}
 
 	.logo{
 		display: flex;
 		align-items: center;
 		cursor: pointer;
-		z-index: 2;
+		z-index: 10;
 	}
 
 	.logo span{
@@ -132,6 +148,7 @@ body{
 		width: 66%;
 		min-height: 200px;
 		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+		margin-top: 288px;
 		margin-bottom: 27px;
 	}
 
@@ -148,6 +165,106 @@ body{
 		font-size: 16px;
 		line-height: 24px;
 		color: var(--header-color);
+	}
+
+	@media screen and (max-width: 800px){
+		body.lock{
+			overflow: hidden;
+		}
+		.menu{
+			padding: 7px calc(25px + 215 * ((100vw - 320px) / (1600 - 320)));
+		}
+		.navbar__logo{
+			transform: scale(0.8);
+		}
+
+		.menu__burger{
+			display: block;
+			position: relative;
+			width: 30px;
+			height: 20px;
+			z-index: 3;
+		}
+		.menu__burger span{
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color: #505050;
+			left: 0;
+			top: 9px;
+			transition: .3s;
+		}
+		.menu__burger::before,
+		.menu__burger::after{
+			content: '';
+			background-color: #505050;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			left: 0;
+			transition: all .3s;
+		}
+		.menu__burger::before{
+			top: 0;
+		}
+		.menu__burger::after{
+			bottom: 0;
+		}
+		.menu__burger.active::before{
+			transform: rotate(45deg);
+			top: 9px;
+		}
+		.menu__burger.active::after{
+			transform: rotate(-45deg);
+			bottom: 9px;
+		}
+		.menu__burger.active span{
+			transform: scale(0);
+		}
+
+		.navbar__menu{
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 75%;
+			height: 100vh;
+			background-color: rgba(255, 255, 255, 0.7);
+			z-index: 2;
+			padding: 100px 0 0 8%;
+			/*transition: .3s;*/
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			overflow: auto;
+		}
+		.menu__list{
+			display: block;
+		}
+
+		.menu__list li{
+			position: relative;
+			display: block;
+			padding: 18px 11px;
+		}
+
+		.menu__list li::before{
+			content: '';
+			width: 80%;
+			height: 1px;
+			background-color: #c8c8c8;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+		.menu__link{
+			font-size: 20px;
+		}
+		.navbar__menu.active{
+			left: 0;
+		}
+
+		.navbar__btn{
+			display: none;
+		}
 	}
 
 /* ----------SERVICES-------- */
@@ -319,6 +436,8 @@ body{
 /* ---------QUESTIONS-------- */
 
 	.questions{
+		width: 100%;
+    overflow: hidden;
 		padding-top: 222px;
 		position: relative;
 		display: flex;
@@ -824,6 +943,8 @@ body{
 /* ----------FOOTER--------- */
 	
 	.footer{
+		width: 100%;
+    overflow: hidden;
 		position: relative;
 		min-height: 445px;
 		padding: 160px 0 36px;
