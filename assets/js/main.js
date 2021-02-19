@@ -16,4 +16,11 @@
 	 	$('.footer__title').click(function(event){
 	 		$(this).toggleClass('active').next().slideToggle(300);
 	 	});
+
+	 	var scroll = new SmoothScroll('a[href*="#"]', {
+			speed: 1000,
+			speedAsDuration: true
+		});
+
 	 });
+

@@ -46,7 +46,7 @@ body{
 	.header{
 		width: 100%;
 		height: 100vh;
-		background: url('../img/apple-blog_web.jpg') center / cover no-repeat;
+		background: url('../img/apple-blog_web.jpg') 70% / cover no-repeat;
 		z-index: -10;
 		margin-top: -112px;
 	}
@@ -75,6 +75,10 @@ body{
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+
+	.menu a{
+		z-index: 10;
 	}
 
 	.menu__burger{
@@ -144,12 +148,30 @@ body{
 		background-color: var(--purple-darkest);
 	}
 
+	.header__container{
+		display: flex;
+		flex-direction: column;
+	}
+
 	.header__content{
 		width: 66%;
 		min-height: 200px;
 		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 		margin-top: 288px;
 		margin-bottom: 27px;
+	}
+
+	.header__image-mobile{
+		display: none;
+		margin: 0 auto 20px;
+		width: 80%;
+		height: auto;
+	}
+
+	.header__image-mobile img{
+		max-width: 100%;
+		height: auto;
+		object-fit: cover;
 	}
 
 	.header__title{
@@ -264,6 +286,64 @@ body{
 
 		.navbar__btn{
 			display: none;
+		}
+
+		.header{
+			margin-top: -86px;
+		}
+
+		.header__container{
+			justify-content: center;
+		}
+
+		.header__content{
+			margin-top: 0;
+		}
+	}
+
+	@media screen and (max-width: 576px){
+		.header__title{
+			font-size: 32px;
+		}
+
+		.header__text{
+			font-size: 14px;
+		}
+	}
+
+	@media screen and (max-width: 395px){
+		.header{
+			background: #f3f3f3;
+		}
+
+		.header__image-mobile{
+			display: block;
+		}
+
+		.header__content{
+			width: 100%;
+		}
+
+		.header__btn{
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (max-width: 320px){
+		.header__container{
+			justify-content: flex-end;
+		}
+
+		.header__content{
+			margin-bottom: 20px;
+		}
+
+		.header__title{
+			font-size: 26px;
+		}
+
+		.header__btn{
+			margin: 0 auto 20px;
 		}
 	}
 
@@ -1064,16 +1144,22 @@ body{
 			margin: 0 auto 40px;
 		}
 
-		@media screen and (max-width: 395px){
-			.footer__navigation{
-				justify-items: center;
-   			text-align: center;
-			}
+		.navigation__item{
+			margin-bottom: 10px;
 		}
 	}
 
 
-	
+	@media screen and (max-width: 395px){
+			.footer__navigation{
+				justify-items: center;
+   			text-align: center;
+			}
+
+			.navigation__item{
+				font-size: 16px;
+			}
+		}
 
 
 
